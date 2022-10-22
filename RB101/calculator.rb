@@ -21,7 +21,7 @@ def float?(num)
 end
 
 def number?(num)
-  num.is_a?(Integer) || num.is_a?(Float)
+  integer?(num) || float?(num)
 end
 
 prompt('welcome')
@@ -33,7 +33,8 @@ while go_again.downcase().start_with?('y')
     prompt('first_number')
     number1 = Kernel.gets().chomp()
 
-    if valid_number?(number1)
+    if number?(number1)
+      number1 = float?(number1) ? number1.to_f : (integer?(number1) ? number1.to_i : nil)
       break
     else
       prompt('valid_number')
@@ -45,35 +46,52 @@ while go_again.downcase().start_with?('y')
     prompt('second_number')
     number2 = Kernel.gets().chomp()
 
-    if valid_number?(number2)
+    if number?(number2)
+      number2 = float?(number2) ? number2.to_f : (integer?(number2) ? number2.to_i : nil)
       break
     else
       prompt('valid_number')
     end
   end
 
-  operator = ''
-  prompt('operator_prompt')
-  loop do
-    operator = Kernel.gets().chomp().to_i
+  dividing_by_zero = true # We assume it is true until proven it is not.
+  until dividing_by_zero == false
 
-    if [1,2,3,4].include?(operator)
-      break
+    operator = ''
+    prompt('operator_prompt')
+    loop do
+      operator = Kernel.gets().chomp().to_i
+
+      if [1,2,3,4].include?(operator)
+        break
+      else
+        prompt("must_choose")
+      end
+    end
+
+    result = case operator
+    when 1 then
+      dividing_by_zero = false 
+      number1 + number2
+    when 2 then
+      dividing_by_zero = false 
+      number1 - number2
+    when 3 then
+      dividing_by_zero = false 
+      number1 * number2
+    when 4
+      if number2 != 0
+        dividing_by_zero = false
+        number1.to_f / number2.to_f
+      else
+        prompt("divide_by_zero")
+      end
     else
-      prompt("Must choose 1, 2, 3, 4")
+      prompt("incorrect_operator")
     end
   end
 
-  result = case operator
-  when 1 then number1 + number2
-  when 2 then number1 - number2
-  when 3 then number1 * number2
-  when 4 then number1.to_f / number2.to_f
-  else
-    prompt("Incorrect input.")
-  end
-
-  prompt("The result is #{result}.")
+  puts ("=> The result is #{result}.")
 
   prompt('another_calc')
   go_again = Kernel.gets().chomp().downcase
