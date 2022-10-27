@@ -1,20 +1,24 @@
-CHOICES = ['rock', 'paper', 'scissors']
+CHOICES = %w(rock paper scissors)
 
 def prompt(message)
   puts("=> #{message}")
 end
 
-def results(player, computer)
-  if (player == 'rock' && computer == 'scissors') ||
-      (player == 'paper' && computer == 'rock') ||
-      (player == 'scissors' && computer == 'paper')
-    "You win!"
-  elsif (player == computer)
-    "It's a draw!"
-  else
-    "You lose! :("
-  end
+def win?(winner, loser)
+  (winner == 'rock' && loser == 'scissors') ||
+  (winner == 'paper' && loser == 'rock') ||
+  (winner == 'scissors' && loser == 'paper')
 end
+
+def results(player, computer)
+  if win?(player, computer)
+    "You win!"
+  elsif win?(computer, player)
+    "You lose! :("
+  else
+    "It's a draw!"
+  end
+ends
 
 play_again = 'y'
 while play_again == 'y'
