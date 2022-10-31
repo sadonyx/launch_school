@@ -1,0 +1,24 @@
+Describe the difference between `!` and `?` in Ruby.
+And explain what would happen in the following scenarios:
+
+1. what is `!=` and where should you use it? 
+  This is the 'not equal' operand and is used in a conditional statement.
+  If two items that are being compared are not equal, it will return true.
+
+2. put `!` before something, like `!user_name`
+  This will return the opposite truthy value of the object it precedes.
+
+3. put `!` after something, like `words.uniq!`
+  When placed at the end of a method name, it indicates that the call does NOT return
+  a modified version of the object being called on, but rather modifies it in place.
+
+4. put `?` before something
+  `? :` is the ternary operator for `if...else`
+
+5. put `?` after something
+  When placed at the end of a method name, it indicates that the call will return a 
+  truthy value, such as true, false, or nil.
+  Answer: it is used to turn any object into the opposite of their boolean equivalent.
+
+5. puts `!!` before something, like `!!user_name`
+  `!!<some_object>` is used to turn any object into their boolean equivalent.
