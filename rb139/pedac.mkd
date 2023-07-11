@@ -1,0 +1,52 @@
+# Understanding the problem (basic rules of code off the bat)
+
+  - given str1 and str2, find substrings of str1 in str2 that have:
+    - EXACTLY 3 characters
+    - characters taht have ASCII values that decrease by index
+      - char at index `i` has lower value than char at `i-1` (the one before it)
+  
+  - first substring is put in the front of the str1 copy, the next is put in the back, repeat until done
+
+# Example and Test Cases (deductions from the test cases)
+
+  - casing does not matter (all lowercase strings)
+  - decreasing substrings has the first letter nearest to the end of the alphabet
+  - str1 and str2 can contain multiple words
+    - first word in str1 must be compare with **ALL** words in str2
+  - whitespaces are not accounted for
+
+# Data Structures
+
+  # Input:
+
+    - 
+    - 
+
+  # Output:
+    
+    - 
+    - 
+
+  # Structure? (Array vs Hash ...) How many and what do they do?
+
+    - 
+    - 
+
+
+# Algorithm
+
+  # Constructor?
+    
+    - 
+
+  # `shift`
+
+    - create two strings: `pre` and `suf`
+      - `pre` will contain all substrings for the before
+      - `suf` will contain all the substrings for the after
+
+    - to find substrings, iterate through the string and 
+
+  # Method 2
+
+    - 
