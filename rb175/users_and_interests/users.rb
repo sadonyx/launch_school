@@ -31,7 +31,7 @@ post "/new-user" do
 
   update_users(@user_name, @email, @interests)
 
-  erb :new_user
+  redirect "/#{@user_name}"
 end
 
 not_found do
