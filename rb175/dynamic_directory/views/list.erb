@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <% @directory.map do |e| %>
+      <ul>
+        <li>
+          <a href = <%= e %>>
+            <%= e %>
+          </a>
+        </li>
+      </ul>
+    <% end %>
+
+    <p>
+  <% if params[:sort] == "desc" %>
+    <a href="/">Sort ascending</a>
+  <% else %>
+    <a href="/?sort=desc">Sort descending</a>
+  <% end %>
+</p>
+  </body>
+</html>
